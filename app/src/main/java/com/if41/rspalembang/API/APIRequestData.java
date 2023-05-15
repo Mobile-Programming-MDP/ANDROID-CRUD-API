@@ -12,23 +12,24 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface APIRequestData {
-    @GET("rumahsakit")
+    @GET("rumahsakit")  //1
     Call<ModelResponse> ardRetrieve();
     @FormUrlEncoded
-    @POST("rumahsakit")
+    @POST("rumahsakit") //2
     Call<ModelResponse> ardCreate(
             @Field("nama") String nama,
             @Field("alamat") String alamat,
             @Field("telepon") String telepon
     );
-    @DELETE("rumahsakit/{id}")
+    //@FormUrlEncoded
+    @DELETE("rumahsakit/{id}") //3
     Call<ModelResponse> ardDelete(
-            @Path("id") int id
+            @Path("id") int id  //4
     );
     @FormUrlEncoded
-    @PUT("rumahsakit/{id}")
+    @PUT("rumahsakit/{id}")     //5
     Call<ModelResponse> ardUpdate(
-            @Path("id") int id,
+            @Path("id") int id,     //6
             @Field("nama") String nama,
             @Field("alamat") String alamat,
             @Field("telepon") String telepon

@@ -66,16 +66,21 @@ public class MainActivity extends AppCompatActivity {
         proses.enqueue(new Callback<ModelResponse>() {
             @Override
             public void onResponse(Call<ModelResponse> call, Response<ModelResponse> response) {
-                int kode = response.body().getKode();
-                String pesan = response.body().getPesan();
-                listRumahSakit = response.body().getData();
-                if (kode == 1){
-                    adRumahSakit = new AdapterRumahSakit(MainActivity.this, listRumahSakit);
-                    rvRumahSakit.setAdapter(adRumahSakit);
-                    adRumahSakit.notifyDataSetChanged();
+                if(response.isSuccessful()){    //tambah kondisi success request
+                    int kode = response.body().getKode();
+                    String pesan = response.body().getPesan();
+                    listRumahSakit = response.body().getData();
+                    if (kode == 1){
+                        adRumahSakit = new AdapterRumahSakit(MainActivity.this, listRumahSakit);
+                        rvRumahSakit.setAdapter(adRumahSakit);
+                        adRumahSakit.notifyDataSetChanged();
+                    }else{
+                        Toast.makeText(MainActivity.this, pesan.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }else{
-                    Toast.makeText(MainActivity.this, pesan.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Error Request", Toast.LENGTH_SHORT).show();
                 }
+
 
                 pbRumahSakit.setVisibility(View.GONE);
             }

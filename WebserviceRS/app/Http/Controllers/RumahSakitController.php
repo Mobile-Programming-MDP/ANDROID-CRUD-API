@@ -59,7 +59,23 @@ class RumahSakitController extends Controller
      */
     public function show(string $id)
     {
-        
+        $find = RumahSakit::find($id);
+        if($find) {
+            return response()->json(
+                [
+                    'kode' => 1,
+                    'pesan' => "Sukses",
+                    'data' => $find,
+                ]
+            );   
+        }else{
+            return response()->json(
+                [
+                    'kode' => 0,
+                    'pesan' => "Data Tidak Ditemukan",
+                ]
+            );  
+        }
     }
 
     /**
@@ -67,7 +83,7 @@ class RumahSakitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $update = RumahSakit::findOrFail($id)
+        $update = RumahSakit::find($id)
                     ->update($request->all());
         if($update) {
             return response()->json(
