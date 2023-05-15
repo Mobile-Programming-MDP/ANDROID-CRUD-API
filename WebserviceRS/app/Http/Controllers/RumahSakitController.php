@@ -36,7 +36,22 @@ class RumahSakitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = RumahSakit::create($request->all());
+        if($insert) {
+            return response()->json(
+                [
+                    'kode' => 1,
+                    'pesan' => "Sukses Menyimpan Data",
+                ]
+            );   
+        }else{
+            return response()->json(
+                [
+                    'kode' => 0,
+                    'pesan' => "Gagal Menyimpan Data",
+                ]
+            );  
+        }
     }
 
     /**
@@ -44,7 +59,7 @@ class RumahSakitController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -52,7 +67,23 @@ class RumahSakitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $update = RumahSakit::findOrFail($id)
+                    ->update($request->all());
+        if($update) {
+            return response()->json(
+                [
+                    'kode' => 1,
+                    'pesan' => "Sukses Mengupdate Data",
+                ]
+            );   
+        }else{
+            return response()->json(
+                [
+                    'kode' => 0,
+                    'pesan' => "Gagal Mengupdate Data",
+                ]
+            );  
+        }
     }
 
     /**
@@ -60,6 +91,22 @@ class RumahSakitController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delete = RumahSakit::findOrFail($id);
+        if($delete) {
+            $delete->delete();
+            return response()->json(
+                [
+                    'kode' => 1,
+                    'pesan' => "Sukses Menghapus Data",
+                ]
+            );   
+        }else{
+            return response()->json(
+                [
+                    'kode' => 0,
+                    'pesan' => "Gagal Menghapus Data",
+                ]
+            );  
+        }
     }
 }
