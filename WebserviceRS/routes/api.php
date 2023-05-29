@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+use App\Http\Controllers\API\AuthController;
+Route::post("login", [AuthController::class, "login"]);
 use App\Http\Controllers\RumahSakitController;
 Route::resource('rumahsakit', RumahSakitController::class);
-use App\Http\Controllers\API\AuthController;
-Route::post("/login", [AuthController::class, "login"]);
+
