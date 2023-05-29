@@ -17,6 +17,7 @@ import com.if41.rspalembang.Adapter.AdapterRumahSakit;
 import com.if41.rspalembang.Model.ModelResponse;
 import com.if41.rspalembang.Model.ModelRumahSakit;
 import com.if41.rspalembang.R;
+import com.if41.rspalembang.Utils.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +34,17 @@ public class MainActivity extends AppCompatActivity {
     private List<ModelRumahSakit> listRumahSakit = new
             ArrayList<>();
     private FloatingActionButton fabTambahData;
-
+    private final Utilities utilities = new Utilities(); //1. buat var utilities
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //2. cek apakah status sudah login
+        if (!utilities.isLogin(MainActivity.this)) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        }
+
         rvRumahSakit = findViewById(R.id.rvRumahSakit);
         pbRumahSakit = findViewById(R.id.pbRumahSakit);
         fabTambahData = findViewById(R.id.fabTambahData);

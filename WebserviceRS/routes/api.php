@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 use App\Http\Controllers\RumahSakitController;
 Route::resource('rumahsakit', RumahSakitController::class);
+use App\Http\Controllers\API\AuthController;
+Route::post("/login", [AuthController::class, "login"]);

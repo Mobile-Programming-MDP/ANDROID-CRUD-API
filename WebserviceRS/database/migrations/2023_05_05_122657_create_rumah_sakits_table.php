@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("nama", 250);
             $table->text("alamat");
             $table->string("telepon", 50);
+            //tambahkan ->nullable()
             $table->text("foto")->nullable();
             $table->timestamps();
         });

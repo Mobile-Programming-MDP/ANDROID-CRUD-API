@@ -1,6 +1,7 @@
 package com.if41.rspalembang.API;
 
 import com.if41.rspalembang.Model.ModelResponse;
+import com.if41.rspalembang.Model.ModelResponseLogin;
 
 import retrofit2.Call;
 import retrofit2.http.DELETE;
@@ -33,5 +34,13 @@ public interface APIRequestData {
             @Field("nama") String nama,
             @Field("alamat") String alamat,
             @Field("telepon") String telepon
+    );
+    //method to login url
+    @FormUrlEncoded
+    @POST("login")
+    Call<ModelResponseLogin> login(
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("device_name") String deviceName
     );
 }
