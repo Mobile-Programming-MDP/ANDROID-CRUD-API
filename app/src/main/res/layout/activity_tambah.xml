@@ -18,6 +18,17 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/previewImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="180dp"
+        android:minHeight="180dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,6 +71,13 @@
             android:hint="@string/telepon_rumah_sakit"
             android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btTakePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0097A7"
+        android:text="Ambil Gambar" />
 
     <Button
         android:id="@+id/btTambah"

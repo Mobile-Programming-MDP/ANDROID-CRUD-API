@@ -54,6 +54,30 @@ class RumahSakitController extends Controller
         }
     }
 
+    /* Simpan data RS + Foto */
+    public function storeWithPhoto(Request $request)
+    {
+        //handle file upload
+        $ext = $request->foto->getClientOriginalExtension();  //ambil file extention
+        $nama_file = "foto-". time() . "." . $ext; //foto-689813913.png
+        $path = $request->foto->storeAs("public", $nama_file);  //save to storage/app folder
+        $insert = RumahSakit::create([
+            'nama' => $request->nama, 
+            'alamat'=> $request->alamat,
+            'telepon' => $request->telepon,
+            'foto' => $nama_file
+        ]);
+
+        if($insert) {
+            return response()->json(
+                [ 'kode' => 1, 'pesan' => "Sukses Menyimpan Data", ]
+            );   
+        }else{
+            return response()->json(
+                ['kode' => 0, 'pesan' => "Gagal Menyimpan Data", ]
+            );  
+        }
+    }
     /**
      * Display the specified resource.
      */

@@ -41,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
             //call login
             login(username, password, "Android1");
 
-            etUsername.setText("");
-            etPassword.setText("");
+            //etUsername.setText("");
+            //etPassword.setText("");
         });
     }
 
@@ -52,18 +52,24 @@ public class LoginActivity extends AppCompatActivity {
         proses.enqueue(new Callback<ModelResponseLogin>() {
             @Override
             public void onResponse(Call<ModelResponseLogin> call, Response<ModelResponseLogin> response) {
-                if (response.isSuccessful() && response.body().getStatus()){
-                    utilities.setPreferences(LoginActivity.this, LOGIN_USERNAME, email);
-                    utilities.setPreferences(LoginActivity.this, ACCESS_TOKEN, response.body().getToken());
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
+                if (response.isSuccessful()){
+                    if(response.body().getStatus() == true){
+                        utilities.setPreferences(LoginActivity.this, LOGIN_USERNAME, email);
+                        utilities.setPreferences(LoginActivity.this, ACCESS_TOKEN, response.body().getToken());
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+                    }else{
+                        Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT)
+                                .show();
+                    }
                 }else{
-                    Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Login gagal", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<ModelResponseLogin> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Gagal menghubungi server :" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Gagal menghubungi server :" + t.getMessage(), Toast.LENGTH_SHORT)
+                        .show();
             }
         });
     }

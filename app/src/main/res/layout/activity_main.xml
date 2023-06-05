@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".Activity.MainActivity">
 
 
@@ -14,11 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_margin="16dp"
         android:contentDescription="fab"
         android:src="@drawable/ic_tambah"
         android:tint="@null" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="Logout"
+        android:src="@drawable/baseline_logout_24"
+        android:backgroundTint="#D32F2F"
+        android:tint="#D32F2F" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRumahSakit"

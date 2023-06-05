@@ -22,3 +22,7 @@ Route::post("login", [AuthController::class, "login"]);
 use App\Http\Controllers\RumahSakitController;
 Route::resource('rumahsakit', RumahSakitController::class);
 
+//route untuk simpan data rs + photo
+Route::post('rumahsakit/uploadfile', [RumahSakitController::class, 'storeWithPhoto']);
+
+

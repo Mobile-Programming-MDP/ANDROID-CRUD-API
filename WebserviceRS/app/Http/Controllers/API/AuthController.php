@@ -27,7 +27,7 @@ class AuthController extends Controller
             ]);
         }
         //Generate Token access User
-        $token = $user->createToken($request->device_name)->plainTestToken();
+        $token = $user->createToken($request->device_name)->plainTextToken;
         return response()->json(
             [
                 'status' => true, 

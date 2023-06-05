@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private List<ModelRumahSakit> listRumahSakit = new
             ArrayList<>();
     private FloatingActionButton fabTambahData;
+    private FloatingActionButton fabLogout;
     private final Utilities utilities = new Utilities(); //1. buat var utilities
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,
                         TambahActivity.class));
+            }
+        });
+
+        fabLogout = findViewById(R.id.fabLogout);
+        fabLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                utilities.setPreferences(MainActivity.this, LoginActivity.LOGIN_USERNAME, null);
+                utilities.setPreferences(MainActivity.this, LoginActivity.ACCESS_TOKEN, null);
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
             }
         });
     }
