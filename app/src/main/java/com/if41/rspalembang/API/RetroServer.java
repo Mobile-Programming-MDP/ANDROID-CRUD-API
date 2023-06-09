@@ -16,7 +16,7 @@ public class RetroServer {
         //jika pakai emulator
         //private static final String baseURL = "http://10.0.2.2:8000/api/";
         //jika menggaunakan ngrok
-        private static final String baseURL = "https://4946-116-90-214-75.ngrok-free.app/api/";    //sesuaikan dengan ngrok
+        private static final String baseURL = "https://b6a3-116-90-214-75.ngrok-free.app/api/";    //sesuaikan dengan ngrok
 //    private static final String baseURL = "https://cobacobalagi888.000webhostapp.com/";
 //    private static final String baseURL = "https://webapirumahsakitpalembang.000webhostapp.com/";
     private static Retrofit retro;
